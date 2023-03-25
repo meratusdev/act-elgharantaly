@@ -16,8 +16,8 @@ const storage: LocalConfig["storage"] | GitHubConfig["storage"] =
     : {
         kind: "github",
         repo: {
-          owner: "zakiego",
-          name: "keystatic-blog",
+          owner: "meratusdev",
+          name: "act-elgharantaly",
         },
       };
 
