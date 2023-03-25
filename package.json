@@ -15,7 +15,7 @@
     "@chakra-ui/react": "^2.5.2",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@keystatic/core": "^0.0.68",
+    "@keystatic/core": "^0.0.76",
     "@keystatic/next": "^0.0.5",
     "@tanstack/react-query": "^4.26.1",
     "@trpc/client": "^10.14.1",
