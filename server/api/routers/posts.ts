@@ -1,5 +1,4 @@
 import { createReader } from "@keystatic/core/reader";
-import * as fs from "fs";
 import { z } from "zod";
 
 import config from "~/keystatic.config";
@@ -18,10 +17,10 @@ export const postsRouter = createTRPCRouter({
     const data = await Promise.all(
       postSlugs.map(async (slug) => {
         const post = await reader.collections.posts.read(slug);
-        const content = (await post?.content()) || [];
+        const content = await post?.content();
         return {
           ...post,
-          content,
+          content: content || [],
           slug,
         };
       }),
@@ -34,11 +33,11 @@ export const postsRouter = createTRPCRouter({
     .query(async ({ input }) => {
       const data = await reader.collections.posts.read(input.slug);
 
-      const content = (await data?.content()) || [];
+      const content = await data?.content();
 
       return {
         ...data,
-        content,
+        content: content || [],
       };
     }),
 });
