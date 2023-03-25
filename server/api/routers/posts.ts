@@ -34,7 +34,7 @@ export const postsRouter = createTRPCRouter({
     .query(async ({ input }) => {
       const data = await reader.collections.posts.read(input.slug);
 
-      const content = await (data?.content() || []);
+      const content = (await data?.content()) || [];
 
       return {
         ...data,
