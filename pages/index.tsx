@@ -1,14 +1,37 @@
 import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
+import { createReader } from "@keystatic/core/reader";
 import { type InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
 import PageWrapper from "~/components/Layout/PageWrapper";
+import config from "~/keystatic.config";
 import { trpcServerSide } from "~/server/api/root";
 import dateFormatter from "~/utils/dateFormatter";
 
+const reader = createReader("", config);
+
+const getAllPost = async () => {
+  const postSlugs = await reader.collections.posts.list();
+
+  const data = await Promise.all(
+    postSlugs.map(async (slug) => {
+      const post = await reader.collections.posts.read(slug);
+      const content = await post?.content();
+      return {
+        ...post,
+        content: content || [],
+        slug,
+      };
+    }),
+  );
+
+  return data;
+};
+
 export async function getStaticProps() {
-  const data = await trpcServerSide.posts.getAllPost();
+  // const data = await trpcServerSide.posts.getAllPost();
+  const data = await getAllPost();
 
   return {
     props: {
