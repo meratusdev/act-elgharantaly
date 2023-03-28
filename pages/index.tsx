@@ -1,17 +1,25 @@
 import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
+import { type InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
 import PageWrapper from "~/components/Layout/PageWrapper";
-import { trpc } from "~/utils/api";
+import { trpcServerSide } from "~/server/api/root";
 import dateFormatter from "~/utils/dateFormatter";
 
-const Home = () => {
-  const { data } = trpc.posts.getAllPost.useQuery();
+export async function getStaticProps() {
+  const data = await trpcServerSide.posts.getAllPost();
 
-  if (!data) {
-    return <p>Loading...</p>;
-  }
+  return {
+    props: {
+      data,
+    },
+    revalidate: 10,
+  };
+}
+
+const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { data } = props;
 
   return (
     <PageWrapper title="Home">
