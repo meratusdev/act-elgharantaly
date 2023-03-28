@@ -21,64 +21,7 @@ const storage: LocalConfig["storage"] | GitHubConfig["storage"] =
 
 export default config({
   storage,
-  // singletons: {
-  //   home: singleton({
-  //     label: "Home",
-  //     path: "content/pages/home/",
-  //     schema: {
-  //       heading: fields.document({
-  //         formatting: {
-  //           inlineMarks: {
-  //             bold: true,
-  //           },
-  //         },
-  //         label: "Heading (note: text that is bolded will show up in red)",
-  //       }),
-  //     },
-  //   }),
-  //   about: singleton({
-  //     label: "About",
-  //     path: "content/pages/about/",
-  //     schema: {
-  //       content: fields.document({
-  //         formatting: true,
-  //         dividers: true,
-  //         links: true,
-  //         layouts: [
-  //           [1, 1],
-  //           [1, 1, 1],
-  //           [2, 1],
-  //           [1, 2, 1],
-  //         ],
-  //         label: "Content",
-  //         componentBlocks: ComponentBlocks,
-  //       }),
-  //     },
-  //   }),
-  // },
   collections: {
-    // authors: collection({
-    //   label: "Authors",
-    //   path: "content/authors/*",
-    //   slugField: "name",
-    //   schema: {
-    //     name: fields.slug({
-    //       name: {
-    //         label: "Name",
-    //         validation: {
-    //           length: {
-    //             min: 1,
-    //           },
-    //         },
-    //       },
-    //     }),
-    //     role: fields.text({ label: "Role" }),
-    //     avatar: fields.image({
-    //       label: "Author avatar",
-    //       directory: "public/images/authors",
-    //     }),
-    //   },
-    // }),
     posts: collection({
       label: "Posts",
       path: "content/posts/*/",
