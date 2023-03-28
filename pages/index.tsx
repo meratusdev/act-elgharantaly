@@ -9,37 +9,35 @@ import config from "~/keystatic.config";
 import { trpcServerSide } from "~/server/api/root";
 import dateFormatter from "~/utils/dateFormatter";
 
-const reader = createReader("", config);
+// const reader = createReader("", config);
 
-const getAllPost = async () => {
-  const postSlugs = await reader.collections.posts.list();
+// const getAllPost = async () => {
+//   const postSlugs = await reader.collections.posts.list();
 
-  console.log("postSlugs", postSlugs);
+//   console.log("postSlugs", postSlugs);
 
-  const data = await Promise.all(
-    postSlugs.map(async (slug) => {
-      const post = await reader.collections.posts.read(slug);
-      const content = await post?.content();
-      return {
-        ...post,
-        content: content || [],
-        slug,
-      };
-    }),
-  );
+//   const data = await Promise.all(
+//     postSlugs.map(async (slug) => {
+//       const post = await reader.collections.posts.read(slug);
+//       const content = (await post?.content()) || [];
+//       return {
+//         ...post,
+//         content: content,
+//         slug,
+//       };
+//     }),
+//   );
 
-  return data;
-};
+//   return data;
+// };
 
 export async function getStaticProps() {
-  // const data = await trpcServerSide.posts.getAllPost();
-  const data = await getAllPost();
+  const data = await trpcServerSide.posts.getAllPost();
 
   return {
     props: {
       data,
     },
-    revalidate: 10,
   };
 }
 
