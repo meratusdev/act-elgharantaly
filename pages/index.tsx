@@ -14,6 +14,8 @@ const reader = createReader("", config);
 const getAllPost = async () => {
   const postSlugs = await reader.collections.posts.list();
 
+  console.log("postSlugs", postSlugs);
+
   const data = await Promise.all(
     postSlugs.map(async (slug) => {
       const post = await reader.collections.posts.read(slug);
