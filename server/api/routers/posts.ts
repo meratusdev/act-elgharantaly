@@ -1,5 +1,4 @@
 import { createReader } from "@keystatic/core/reader";
-import { concat } from "lodash";
 import { z } from "zod";
 
 import config from "~/keystatic.config";
@@ -54,5 +53,52 @@ export const postsRouter = createTRPCRouter({
         ...data,
         content: content || [],
       });
+    }),
+
+  pagination: publicProcedure
+    .input(
+      z.object({
+        page: z.number().nullish(),
+        limit: z.number().nullish(),
+      }),
+    )
+    .query(async ({ input }) => {
+      const page = input.page || 1;
+      const limit = input.limit || 4;
+
+      const postSlugs = await reader.collections.posts.list();
+
+      const data = await Promise.all(
+        postSlugs.map(async (slug) => {
+          const post = await reader.collections.posts.read(slug);
+          const content = await post?.content();
+
+          return PostSchema.parse({
+            ...post,
+            content: content || [],
+            slug,
+          });
+        }),
+      );
+
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
+      const result = data.slice(startIndex, endIndex);
+
+      const totalPage =
+        data.length % limit === 0
+          ? data.length / limit
+          : data.length / limit + 1;
+
+      const paging = {
+        page,
+        limit,
+        total: totalPage,
+        hasNext: endIndex < data.length,
+        hasPrevious: startIndex > 0,
+      };
+
+      return { paging, result };
     }),
 });
