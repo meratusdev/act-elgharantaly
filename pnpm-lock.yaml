@@ -14,6 +14,7 @@ specifiers:
   '@trpc/react-query': ^10.18.0
   '@trpc/server': ^10.18.0
   '@types/eslint': ^8.21.3
+  '@types/lodash': ^4.14.192
   '@types/node': ^18.15.10
   '@types/react': ^18.0.30
   '@types/react-dom': ^18.0.11
@@ -28,6 +29,7 @@ specifiers:
   eslint-plugin-simple-import-sort: ^10.0.0
   framer-motion: ^10.9.2
   jotai: ^2.0.3
+  lodash: ^4.17.21
   next: ^13.2.4
   next-seo: ^5.15.0
   postcss: ^8.4.21
@@ -59,6 +61,7 @@ dependencies:
   date-fns: 2.29.3
   framer-motion: 10.9.2_biqbaboplfbrettd7655fr4n2y
   jotai: 2.0.3_react@18.2.0
+  lodash: 4.17.21
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
   next-seo: 5.15.0_ld2jel3hspngo3u5lti2kgl2sq
   prettier: 2.8.7
@@ -72,6 +75,7 @@ dependencies:
 devDependencies:
   '@swc-jotai/react-refresh': 0.0.7
   '@types/eslint': 8.21.3
+  '@types/lodash': 4.14.192
   '@types/node': 18.15.10
   '@types/react': 18.0.30
   '@types/react-dom': 18.0.11
@@ -3312,12 +3316,11 @@ packages:
   /@types/lodash.mergewith/4.6.7:
     resolution: {integrity: sha512-3m+lkO5CLRRYU0fhGRp7zbsGi6+BZj0uTVSwvcKU+nSlhjA9/QRNfuSGnD2mX6hQA7ZbmcCkzk5h4ZYGOtk14A==}
     dependencies:
-      '@types/lodash': 4.14.191
+      '@types/lodash': 4.14.192
     dev: false
 
-  /@types/lodash/4.14.191:
-    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
-    dev: false
+  /@types/lodash/4.14.192:
+    resolution: {integrity: sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==}
 
   /@types/markdown-it/12.2.3:
     resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
@@ -7214,7 +7217,7 @@ packages:
     dependencies:
       '@juggle/resize-observer': 3.4.0
       '@types/is-hotkey': 0.1.7
-      '@types/lodash': 4.14.191
+      '@types/lodash': 4.14.192
       direction: 1.0.4
       is-hotkey: 0.1.8
       is-plain-object: 5.0.0
