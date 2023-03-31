@@ -30,22 +30,23 @@ export default config({
         title: fields.slug({
           name: {
             label: "Title",
-            validation: {
-              length: {
-                min: 1,
-              },
-            },
           },
         }),
         summary: fields.text({
           label: "Summary",
+          multiline: true,
           validation: {
             length: {
               min: 1,
             },
           },
         }),
-        publishedDate: fields.date({ label: "Published Date" }),
+        publishedDate: fields.date({
+          label: "Published Date",
+          validation: {
+            isRequired: true,
+          },
+        }),
         coverImage: fields.image({
           label: "Image",
           directory: "public/images/posts",
