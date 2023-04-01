@@ -19,11 +19,11 @@ export const Navbar = () => {
     <Box
       py={{
         base: "2",
-        md: "7",
+        md: "4",
       }}
       position="absolute"
-      borderBottom="1px"
-      borderColor="gray.200"
+      // borderBottom="1px"
+      // borderColor="gray.200"
       w="full"
     >
       <ContainerWrapper>
@@ -33,7 +33,7 @@ export const Navbar = () => {
               color="blackAlpha.800"
               size={{
                 base: "md",
-                md: "xl",
+                md: "lg",
               }}
             >
               ACT-Elgharantaly

@@ -28,7 +28,7 @@ export const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
       }}
       pt={{
         base: "20",
-        md: "32",
+        md: "24",
       }}
       pb="8"
     >

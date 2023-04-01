@@ -20,7 +20,7 @@ export const PaginationLayout: React.FC<Props> = (props) => {
               <Balancer>
                 <Heading
                   size={{
-                    base: "sm",
+                    base: "md",
                     md: "lg",
                   }}
                   color="blackAlpha.900"
@@ -31,10 +31,10 @@ export const PaginationLayout: React.FC<Props> = (props) => {
               <Text
                 noOfLines={3}
                 fontSize={{
-                  base: "sm",
-                  md: "lg",
+                  base: "md",
+                  md: "md",
                 }}
-                color="blackAlpha.800"
+                color="blackAlpha.700"
               >
                 {post.summary}
               </Text>

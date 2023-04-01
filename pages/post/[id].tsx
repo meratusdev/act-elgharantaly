@@ -1,14 +1,11 @@
-import { Heading } from "@chakra-ui/react";
-import { DocumentRenderer } from "@keystatic/core/renderer";
 import {
   type GetStaticPaths,
   type GetStaticPropsContext,
   type InferGetStaticPropsType,
 } from "next";
-import Balancer from "react-wrap-balancer";
 
 import PageWrapper from "~/components/Layout/PageWrapper";
-import { PostHeader } from "~/components/Layout/Post/Header";
+import { PostLayout } from "~/components/Layout/Post/Layout";
 import { trpcServerSide } from "~/server/api/root";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -42,15 +39,9 @@ export const getStaticProps = async (
 };
 
 const PagePosts = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { id, data } = props;
-
   return (
-    <PageWrapper title={data.title}>
-      <PostHeader slug={props.id} date={data.publishedDate} />
-      <Balancer>
-        <Heading>{data.title}</Heading>
-        <DocumentRenderer document={data.content} />
-      </Balancer>
+    <PageWrapper title={props.data.title}>
+      <PostLayout {...props} />
     </PageWrapper>
   );
 };
