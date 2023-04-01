@@ -21,8 +21,10 @@ export const Navbar = () => {
         base: "2",
         md: "7",
       }}
+      position="absolute"
       borderBottom="1px"
       borderColor="gray.200"
+      w="full"
     >
       <ContainerWrapper>
         <HStack>

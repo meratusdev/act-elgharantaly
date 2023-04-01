@@ -1,4 +1,4 @@
-import { Box, Container } from "@chakra-ui/react";
+import { Container, Stack } from "@chakra-ui/react";
 
 export const ContainerWrapper = ({
   children,
@@ -19,5 +19,20 @@ export const ContainerWrapper = ({
 };
 
 export const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <Box py="6">{children}</Box>;
+  return (
+    <Stack
+      spacing="0"
+      minH={{
+        base: "100dvh",
+        md: "100vh",
+      }}
+      pt={{
+        base: "20",
+        md: "32",
+      }}
+      pb="8"
+    >
+      {children}
+    </Stack>
+  );
 };

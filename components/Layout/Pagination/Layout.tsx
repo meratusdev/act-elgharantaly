@@ -1,4 +1,4 @@
-import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
+import { Divider, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
@@ -52,6 +52,7 @@ export const PaginationLayout: React.FC<Props> = (props) => {
           </Link>
         ))}
       </Stack>
+      <Spacer />
       <Pagination id="page" path="page" {...paging} />
     </>
   );
