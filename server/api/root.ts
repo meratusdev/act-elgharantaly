@@ -1,3 +1,5 @@
+import { type inferRouterOutputs } from "@trpc/server";
+
 import { exampleRouter } from "~/server/api/routers/example";
 import { postsRouter } from "~/server/api/routers/posts";
 import { createTRPCRouter } from "~/server/api/trpc";
@@ -16,3 +18,5 @@ export const appRouter = createTRPCRouter({
 export type AppRouter = typeof appRouter;
 
 export const trpcServerSide = appRouter.createCaller({});
+
+export type OutputTypeTRPC = inferRouterOutputs<AppRouter>;

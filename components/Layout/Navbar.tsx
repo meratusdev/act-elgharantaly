@@ -16,17 +16,43 @@ import { ContainerWrapper } from "~/components/Layout/Container";
 
 export const Navbar = () => {
   return (
-    <Box py="8" borderBottom="1px" borderColor="gray.200">
+    <Box
+      py={{
+        base: "2",
+        md: "7",
+      }}
+      borderBottom="1px"
+      borderColor="gray.200"
+    >
       <ContainerWrapper>
         <HStack>
           <Link href="/">
-            <Heading color="blackAlpha.800">ACT-Elgharantaly</Heading>
+            <Heading
+              color="blackAlpha.800"
+              size={{
+                base: "md",
+                md: "xl",
+              }}
+            >
+              ACT-Elgharantaly
+            </Heading>
           </Link>
           <Spacer />
           <Menu>
             <MenuButton
               as={IconButton}
-              icon={<HamburgerIcon h={8} w={8} />}
+              icon={
+                <HamburgerIcon
+                  h={{
+                    base: "5",
+                    md: "8",
+                  }}
+                  w={{
+                    base: "5",
+                    md: "8",
+                  }}
+                />
+              }
               variant="ghost"
             />
             <MenuList>
