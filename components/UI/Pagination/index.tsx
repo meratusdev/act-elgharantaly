@@ -35,14 +35,15 @@ export const Pagination: React.FC<PaginationProps> = ({
     <Center>
       <HStack>
         <IconButton
-          as="a"
-          href={`/${path}/${page - 1}`}
           aria-label="Previous page"
           size="sm"
           boxSize="40px"
           variant="ghost"
           isDisabled={!hasPrevious}
           icon={<ChevronLeftIcon h={6} w={6} />}
+          onClick={() => {
+            router.push(`/${path}/${page - 1}`, undefined);
+          }}
         />
         <HStack>
           {pageNumber.map((i) => {
@@ -50,27 +51,39 @@ export const Pagination: React.FC<PaginationProps> = ({
             const isCurrent = i === page;
 
             return (
-              <a key={page} href={i === null ? "#" : `/${path}/${i}`}>
-                <Square
-                  as={Button}
-                  variant={isCurrent ? "solid" : "ghost"}
-                  size="40px"
-                  rounded="md"
+              <Square
+                key={`page-${i}`}
+                as={Button}
+                variant={isCurrent ? "solid" : "ghost"}
+                rounded="md"
+                onClick={() => {
+                  if (i !== null) {
+                    router.push(`/${path}/${i}`, undefined);
+                  }
+                }}
+              >
+                <Text
+                  fontSize={{
+                    base: "sm",
+                    md: "md",
+                  }}
                 >
-                  <Text>{_text}</Text>
-                </Square>
-              </a>
+                  {_text}
+                </Text>
+              </Square>
+              // </a>
             );
           })}
         </HStack>
         <IconButton
-          as="a"
-          href={`/${path}/${page + 1}`}
           aria-label="Next page"
           size="sm"
           boxSize="40px"
           variant="ghost"
           isDisabled={!hasNext}
+          onClick={() => {
+            router.push(`/${path}/${page + 1}`, undefined);
+          }}
           icon={<ChevronRightIcon h={6} w={6} />}
         />
       </HStack>
