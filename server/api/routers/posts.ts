@@ -11,7 +11,7 @@ const PostSchema = z.object({
   title: z.string(),
   summary: z.string(),
   slug: z.string(),
-  publishedDate: z.string().nullable(),
+  publishedDate: z.string(),
   coverImage: z.string().nullable(),
   instagramLink: z.string().nullable(),
   tags: z.array(z.string().nullable()),
@@ -82,11 +82,7 @@ export const postsRouter = createTRPCRouter({
         }),
       );
 
-      _data;
-      // ^?
-
       const data = sortByDate(_data, "desc");
-      // ^?
 
       const startIndex = (page - 1) * limit;
       const endIndex = page * limit;
