@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import config from "~/keystatic.config";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { sortByDate } from "~/utils/sort";
 
 const reader = createReader("", config);
 
@@ -68,7 +69,7 @@ export const postsRouter = createTRPCRouter({
 
       const postSlugs = await reader.collections.posts.list();
 
-      const data = await Promise.all(
+      const _data = await Promise.all(
         postSlugs.map(async (slug) => {
           const post = await reader.collections.posts.read(slug);
           const content = await post?.content();
@@ -80,6 +81,12 @@ export const postsRouter = createTRPCRouter({
           });
         }),
       );
+
+      _data;
+      // ^?
+
+      const data = sortByDate(_data, "desc");
+      // ^?
 
       const startIndex = (page - 1) * limit;
       const endIndex = page * limit;
