@@ -53,6 +53,9 @@ export default config({
         }),
         instagramLink: fields.url({
           label: "Instagram Link",
+          validation: {
+            isRequired: false,
+          },
         }),
         tags: fields.array(
           fields.relationship({
