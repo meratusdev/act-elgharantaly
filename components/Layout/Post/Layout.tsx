@@ -1,8 +1,8 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Button, HStack, Spacer, Stack, Text } from "@chakra-ui/react";
+import { Box, Spacer, Stack } from "@chakra-ui/react";
 import { DocumentRenderer } from "@keystatic/core/renderer";
 
 import { PostHeader } from "~/components/Layout/Post/Header";
+import { OtherPost } from "~/components/Layout/Post/OtherPost";
 import { renderersPost } from "~/components/Layout/Post/RendererConfig";
 import { type OutputTypeTRPC } from "~/server/api/root";
 
@@ -57,32 +57,5 @@ export const PostLayout: React.FC<Props> = ({ id, data, nextPrev }) => {
         )}
       </Stack>
     </>
-  );
-};
-
-const OtherPost = ({
-  title,
-  slug,
-  direction,
-}: {
-  title: string;
-  slug: string;
-  direction: "left" | "right";
-}) => {
-  return (
-    <Button
-      as="a"
-      href={`/post/${slug}`}
-      justifyContent={direction === "left" ? "left" : "right"}
-      size="sm"
-    >
-      <HStack spacing="2">
-        {direction === "left" && <ChevronLeftIcon />}
-        <Text fontSize="sm" fontWeight="normal">
-          {title}
-        </Text>
-        {direction === "right" && <ChevronRightIcon />}
-      </HStack>
-    </Button>
   );
 };
