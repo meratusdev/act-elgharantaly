@@ -19,6 +19,25 @@ const PostSchema = z.object({
   content: z.any(),
 });
 
+const getAllPost = async () => {
+  const postSlugs = await reader.collections.posts.list();
+
+  const data = await Promise.all(
+    postSlugs.map(async (slug) => {
+      const post = await reader.collections.posts.read(slug);
+      const content = await post?.content();
+
+      return PostSchema.parse({
+        ...post,
+        content: content || [],
+        slug,
+      });
+    }),
+  );
+
+  return data;
+};
+
 export const postsRouter = createTRPCRouter({
   getAllSlug: publicProcedure.query(async () => {
     const data = await reader.collections.posts.list();
@@ -26,20 +45,7 @@ export const postsRouter = createTRPCRouter({
   }),
 
   getAllPost: publicProcedure.query(async () => {
-    const postSlugs = await reader.collections.posts.list();
-
-    const data = await Promise.all(
-      postSlugs.map(async (slug) => {
-        const post = await reader.collections.posts.read(slug);
-        const content = await post?.content();
-
-        return PostSchema.parse({
-          ...post,
-          content: content || [],
-          slug,
-        });
-      }),
-    );
+    const data = await getAllPost();
 
     return data;
   }),
@@ -77,6 +83,20 @@ export const postsRouter = createTRPCRouter({
       });
     }),
 
+  getNextPrevPost: publicProcedure
+    .input(z.object({ slug: z.string() }))
+    .query(async ({ input }) => {
+      const data = await getAllPost();
+
+      const sortedData = sortByDate(data, "desc");
+
+      const index = sortedData.findIndex((item) => item.slug === input.slug);
+
+      const next = sortedData[index - 1] || null;
+      const prev = sortedData[index + 1] || null;
+
+      return { prev, next };
+    }),
   pagination: publicProcedure
     .input(
       z.object({

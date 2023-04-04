@@ -30,10 +30,15 @@ export const getStaticProps = async (
     slug: id,
   });
 
+  const nextPrev = await trpcServerSide.posts.getNextPrevPost({
+    slug: id,
+  });
+
   return {
     props: {
-      data,
       id,
+      data,
+      nextPrev,
     },
   };
 };
