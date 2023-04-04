@@ -4,6 +4,7 @@ import { z } from "zod";
 import config from "~/keystatic.config";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { sortByDate } from "~/utils/sort";
+import { unwrapContent } from "~/utils/unwrap";
 
 const reader = createReader("", config);
 
@@ -35,6 +36,26 @@ export const postsRouter = createTRPCRouter({
         return PostSchema.parse({
           ...post,
           content: content || [],
+          slug,
+        });
+      }),
+    );
+
+    return data;
+  }),
+
+  getAllPostSearch: publicProcedure.query(async () => {
+    const postSlugs = await reader.collections.posts.list();
+
+    const data = await Promise.all(
+      postSlugs.map(async (slug) => {
+        const post = await reader.collections.posts.read(slug);
+        const content = await post?.content();
+
+        return PostSchema.extend({ fullText: z.string() }).parse({
+          ...post,
+          content: content || [],
+          fullText: unwrapContent(content, post?.title as string),
           slug,
         });
       }),

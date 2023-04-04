@@ -36,12 +36,14 @@ specifiers:
   prettier: ^2.8.7
   react: 18.2.0
   react-dom: 18.2.0
+  react-hook-form: ^7.43.9
   react-icons: ^4.8.0
   react-wrap-balancer: ^0.4.0
   superjson: ^1.12.2
   tailwindcss: ^3.3.1
   turbo: ^1.8.8
   typescript: ^5.0.3
+  use-debounce: ^9.0.3
   vite-tsconfig-paths: ^4.0.7
   vitest: ^0.29.8
   zod: ^3.21.4
@@ -67,9 +69,11 @@ dependencies:
   prettier: 2.8.7
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.43.9_react@18.2.0
   react-wrap-balancer: 0.4.0_react@18.2.0
   superjson: 1.12.2
   typescript: 5.0.3
+  use-debounce: 9.0.3_react@18.2.0
   zod: 3.21.4
 
 devDependencies:
@@ -6925,6 +6929,15 @@ packages:
       use-sidecar: 1.1.2_b7lksjcz5zr4rqebyeqormarua
     dev: false
 
+  /react-hook-form/7.43.9_react@18.2.0:
+    resolution: {integrity: sha512-AUDN3Pz2NSeoxQ7Hs6OhQhDr6gtF9YRuutGDwPQqhSUAHJSgGl2VeY3qN19MG0SucpjgDiuMJ4iC5T5uB+eaNQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-icons/4.8.0_react@18.2.0:
     resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
     peerDependencies:
@@ -7726,6 +7739,15 @@ packages:
       '@types/react': 18.0.32
       react: 18.2.0
       tslib: 2.5.0
+    dev: false
+
+  /use-debounce/9.0.3_react@18.2.0:
+    resolution: {integrity: sha512-FhtlbDtDXILJV7Lix5OZj5yX/fW1tzq+VrvK1fnT2bUrPOGruU9Rw8NCEn+UI9wopfERBEZAOQ8lfeCJPllgnw==}
+    engines: {node: '>= 10.0.0'}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use-sidecar/1.1.2_b7lksjcz5zr4rqebyeqormarua:
