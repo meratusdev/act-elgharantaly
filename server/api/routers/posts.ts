@@ -15,7 +15,7 @@ const PostSchema = z.object({
   publishedDate: z.string(),
   coverImage: z.string().nullable(),
   instagramLink: z.string().nullable(),
-  tags: z.array(z.string().nullable()),
+  tags: z.array(z.string()).nullable(),
   content: z.any(),
 });
 

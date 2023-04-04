@@ -4,6 +4,7 @@ import { DocumentRenderer } from "@keystatic/core/renderer";
 import { PostHeader } from "~/components/Layout/Post/Header";
 import { OtherPost } from "~/components/Layout/Post/OtherPost";
 import { renderersPost } from "~/components/Layout/Post/RendererConfig";
+import { Tags } from "~/components/Layout/Post/Tag";
 import { type OutputTypeTRPC } from "~/server/api/root";
 
 interface Props {
@@ -32,6 +33,10 @@ export const PostLayout: React.FC<Props> = ({ id, data, nextPrev }) => {
           <DocumentRenderer renderers={renderersPost} document={data.content} />
         </Box>
       </Stack>
+
+      <Box>
+        <Tags tags={data.tags} />
+      </Box>
 
       <Stack
         direction={{
