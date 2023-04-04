@@ -34,7 +34,7 @@ export const PostLayout: React.FC<Props> = ({ id, data, nextPrev }) => {
         </Box>
       </Stack>
 
-      <Box>
+      <Box pt="4">
         <Tags tags={data.tags} />
       </Box>
 
