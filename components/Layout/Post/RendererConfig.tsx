@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { type DocumentRendererProps } from "@keystatic/core/renderer";
 
 export const renderersPost: DocumentRendererProps["renderers"] = {
@@ -7,6 +7,13 @@ export const renderersPost: DocumentRendererProps["renderers"] = {
     bold: ({ children }) => {
       return <strong>{children}</strong>;
     },
+    link({ href, children }) {
+      return (
+        <Text as="a" href={href} color="blue.500">
+          {children}
+        </Text>
+      );
+    },
   },
   block: {
     paragraph: ({ children, textAlign }) => {
@@ -14,6 +21,21 @@ export const renderersPost: DocumentRendererProps["renderers"] = {
         <Text fontSize="md" py="2" lineHeight="28px" textAlign={textAlign}>
           {children}
         </Text>
+      );
+    },
+    blockquote: ({ children }) => {
+      return (
+        <Box>
+          <Text
+            as="blockquote"
+            borderLeft="3px solid"
+            borderColor="gray.700"
+            pl="4"
+            my="2"
+          >
+            {children}
+          </Text>
+        </Box>
       );
     },
   },
