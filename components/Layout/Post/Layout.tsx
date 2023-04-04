@@ -20,21 +20,17 @@ export const PostLayout: React.FC<Props> = ({ id, data }) => {
         date={data.publishedDate}
         image={data.coverImage}
       />
-      <Balancer>
-        <Stack
-          pt={{
-            base: "2",
-            md: "4",
-          }}
-        >
-          <Box pt="2">
-            <DocumentRenderer
-              renderers={renderersPost}
-              document={data.content}
-            />
-          </Box>
-        </Stack>
-      </Balancer>
+
+      <Stack
+        pt={{
+          base: "2",
+          md: "4",
+        }}
+      >
+        <Box pt="2">
+          <DocumentRenderer renderers={renderersPost} document={data.content} />
+        </Box>
+      </Stack>
     </>
   );
 };
