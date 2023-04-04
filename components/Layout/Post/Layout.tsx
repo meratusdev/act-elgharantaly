@@ -1,11 +1,6 @@
-import {
-  ArrowLeftIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Button, HStack, Spacer, Stack, Text } from "@chakra-ui/react";
 import { DocumentRenderer } from "@keystatic/core/renderer";
-import Balancer from "react-wrap-balancer";
 
 import { PostHeader } from "~/components/Layout/Post/Header";
 import { renderersPost } from "~/components/Layout/Post/RendererConfig";
