@@ -26,6 +26,7 @@ export const SearchForm: React.FC<Props> = ({ setSearchValue }) => {
           id="search"
           variant="filled"
           placeholder="Cari kata kunci"
+          autoComplete="off"
           {...register("search")}
         />
         <InputRightElement>
