@@ -35,15 +35,14 @@ export const Pagination: React.FC<PaginationProps> = ({
     <Center>
       <HStack>
         <IconButton
+          as="a"
+          href={hasPrevious ? `/${path}/${page - 1}` : undefined}
           aria-label="Previous page"
           size="sm"
           boxSize="40px"
           variant="ghost"
           isDisabled={!hasPrevious}
           icon={<ChevronLeftIcon h={6} w={6} />}
-          onClick={() => {
-            router.push(`/${path}/${page - 1}`, undefined);
-          }}
         />
         <HStack>
           {pageNumber.map((i) => {
@@ -51,16 +50,14 @@ export const Pagination: React.FC<PaginationProps> = ({
             const isCurrent = i === page;
 
             return (
-              <Square
+              <Button
                 key={`page-${i}`}
-                as={Button}
+                as="a"
+                href={i === null ? undefined : `/${path}/${i}`}
                 variant={isCurrent ? "solid" : "ghost"}
                 rounded="md"
-                onClick={() => {
-                  if (i !== null) {
-                    router.push(`/${path}/${i}`, undefined);
-                  }
-                }}
+                cursor={isCurrent ? "default" : "pointer"}
+                isDisabled={i === null}
               >
                 <Text
                   fontSize={{
@@ -70,20 +67,18 @@ export const Pagination: React.FC<PaginationProps> = ({
                 >
                   {_text}
                 </Text>
-              </Square>
-              // </a>
+              </Button>
             );
           })}
         </HStack>
         <IconButton
+          as="a"
+          href={hasNext ? `/${path}/${page + 1}` : undefined}
           aria-label="Next page"
           size="sm"
           boxSize="40px"
           variant="ghost"
           isDisabled={!hasNext}
-          onClick={() => {
-            router.push(`/${path}/${page + 1}`, undefined);
-          }}
           icon={<ChevronRightIcon h={6} w={6} />}
         />
       </HStack>
