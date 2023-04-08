@@ -9,6 +9,7 @@ import {
   MenuItem,
   MenuList,
   Spacer,
+  Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -22,8 +23,6 @@ export const Navbar = () => {
         md: "4",
       }}
       position="absolute"
-      // borderBottom="1px"
-      // borderColor="gray.200"
       w="full"
     >
       <ContainerWrapper>
@@ -31,42 +30,90 @@ export const Navbar = () => {
           <Link href="/">
             <Heading
               color="blackAlpha.800"
-              size={{
-                base: "md",
-                md: "lg",
+              fontSize={{
+                base: "xl",
+                md: "2xl",
               }}
+              fontWeight="extrabold"
             >
               ACT-Elgharantaly
             </Heading>
           </Link>
           <Spacer />
-          <Menu>
-            <MenuButton
-              as={IconButton}
-              icon={
-                <HamburgerIcon
-                  h={{
-                    base: "5",
-                    md: "8",
-                  }}
-                  w={{
-                    base: "5",
-                    md: "8",
-                  }}
-                />
-              }
-              variant="ghost"
-            />
-            <MenuList>
-              <MenuItem>Download</MenuItem>
-              <MenuItem>Create a Copy</MenuItem>
-              <MenuItem>Mark as Draft</MenuItem>
-              <MenuItem>Delete</MenuItem>
-              <MenuItem>Attend a Workshop</MenuItem>
-            </MenuList>
-          </Menu>
+          <MobileMenu />
+          <DesktopMenu />
         </HStack>
       </ContainerWrapper>
     </Box>
+  );
+};
+
+const listMenu: Array<{ title: string; href: string }> = [
+  {
+    title: "Archive",
+    href: "/archive",
+  },
+  {
+    title: "Search",
+    href: "/search",
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+];
+
+const MobileMenu = () => {
+  return (
+    <Box
+      display={{
+        base: "block",
+        md: "none",
+      }}
+    >
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          icon={
+            <HamburgerIcon
+              h={{
+                base: "5",
+                md: "8",
+              }}
+              w={{
+                base: "5",
+                md: "8",
+              }}
+            />
+          }
+          variant="ghost"
+        />
+        <MenuList>
+          {listMenu.map((item) => (
+            <Link key={item.title} href={item.href}>
+              <MenuItem>{item.title}</MenuItem>
+            </Link>
+          ))}
+        </MenuList>
+      </Menu>
+    </Box>
+  );
+};
+
+const DesktopMenu = () => {
+  return (
+    <HStack
+      display={{
+        base: "none",
+        md: "flex",
+      }}
+      spacing="6"
+    >
+      {listMenu.map((item) => (
+        <Link key={item.title} href={item.href}>
+          <Text fontWeight="medium">{item.title}</Text>
+        </Link>
+      ))}
+    </HStack>
   );
 };
