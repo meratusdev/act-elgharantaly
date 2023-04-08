@@ -7,9 +7,9 @@ export const ContainerWrapper = ({
 }) => {
   return (
     <Container
-      maxW="container.xl"
+      maxW="container.lg"
       px={{
-        base: "6",
+        base: "3",
         md: "8",
       }}
     >
