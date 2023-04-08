@@ -11,7 +11,7 @@ export const PaginationLayout: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Stack spacing="6" divider={<Divider h="0.5px" bg="gray.300" />}>
+      <Stack spacing="6" divider={<Divider h="0.5px" borderColor="gray.300" />}>
         {result.map((post) => (
           <PostCard key={post.slug} {...post} />
         ))}
