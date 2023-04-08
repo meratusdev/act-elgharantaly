@@ -1,4 +1,4 @@
-import { Container, Stack } from "@chakra-ui/react";
+import { Center, Container, Stack } from "@chakra-ui/react";
 
 export const ContainerWrapper = ({
   children,
@@ -20,19 +20,22 @@ export const ContainerWrapper = ({
 
 export const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Stack
-      spacing="0"
-      minH={{
-        base: "100dvh",
-        md: "100vh",
-      }}
-      pt={{
-        base: "20",
-        md: "24",
-      }}
-      pb="8"
-    >
-      {children}
-    </Stack>
+    <Center>
+      <Stack
+        maxW="container.md"
+        spacing="0"
+        minH={{
+          base: "100dvh",
+          md: "100vh",
+        }}
+        pt={{
+          base: "20",
+          md: "24",
+        }}
+        pb="8"
+      >
+        {children}
+      </Stack>
+    </Center>
   );
 };
