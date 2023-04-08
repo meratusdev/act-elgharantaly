@@ -1,20 +1,15 @@
-import { LinkIcon } from "@chakra-ui/icons";
 import {
   Avatar,
   Box,
   Center,
   Heading,
   HStack,
-  IconButton,
-  Image,
-  Spacer,
   Stack,
   Text,
-  Tooltip,
 } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { HiHeart, HiOutlineHeart } from "react-icons/hi";
 
+import { siteConfig } from "~/siteconfig";
 import Balancer from "~/utils/balancer";
 import { bookmarkAtom } from "~/utils/bookmark";
 import dateFormatter from "~/utils/dateFormatter";
@@ -87,12 +82,9 @@ export const PostHeader: React.FC<Props> = ({ slug, date, title, image }) => {
 
       <Center>
         <HStack pt="6">
-          <Avatar
-            src="https://avatars.githubusercontent.com/u/1164541?v=4"
-            size="md"
-          />
+          <Avatar src={siteConfig.author.avatar} size="md" />
           <Stack spacing="0" pl="2" alignItems="justify">
-            <Text fontWeight="semibold">Aan Candra Talib</Text>
+            <Text fontWeight="semibold">{siteConfig.author.name}</Text>
 
             <Text
               as="a"

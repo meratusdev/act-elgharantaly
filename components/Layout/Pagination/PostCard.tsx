@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
 
+import { siteConfig } from "~/siteconfig";
 import dateFormatter from "~/utils/dateFormatter";
 
 interface Props {
@@ -39,9 +40,9 @@ export const PostCard: React.FC<Props> = ({
       <Stack spacing="3">
         <Balancer>
           <Heading
-            size={{
-              base: "md",
-              md: "lg",
+            fontSize={{
+              base: "2xl",
+              md: "2xl",
             }}
             color="blackAlpha.900"
           >
@@ -63,7 +64,7 @@ export const PostCard: React.FC<Props> = ({
           />
         ) : (
           <Text
-            noOfLines={3}
+            noOfLines={siteConfig.pagination.summary.noOfLines}
             fontSize={{
               base: "md",
               md: "md",
@@ -117,7 +118,7 @@ const HighlightSummary: React.FC<HighlightSummaryProps> = ({
   if (indexHighlight === -1) {
     return (
       <Text
-        noOfLines={3}
+        noOfLines={siteConfig.pagination.summary.noOfLines}
         fontSize={{
           base: "md",
           md: "md",
@@ -136,7 +137,7 @@ const HighlightSummary: React.FC<HighlightSummaryProps> = ({
 
   return (
     <Text
-      noOfLines={3}
+      noOfLines={siteConfig.pagination.summary.noOfLines}
       fontSize={{
         base: "md",
         md: "md",
@@ -149,19 +150,3 @@ const HighlightSummary: React.FC<HighlightSummaryProps> = ({
     </Text>
   );
 };
-
-// const textHighlight = textWithoutTitle.substring(start, end);
-
-// return (
-//   <Text
-//     noOfLines={3}
-//     fontSize={{
-//       base: "md",
-//       md: "md",
-//     }}
-//     color="blackAlpha.700"
-//   >
-//     <Highlight query={query} styles={highlightStyle}>
-//       {textHighlight}
-//     </Highlight>
-//   </Text>
