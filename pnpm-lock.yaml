@@ -18,6 +18,7 @@ specifiers:
   '@types/node': ^18.15.11
   '@types/react': ^18.0.32
   '@types/react-dom': ^18.0.11
+  '@types/uuid': ^9.0.1
   '@typescript-eslint/eslint-plugin': ^5.57.0
   '@typescript-eslint/parser': ^5.57.0
   '@vercel/og': ^0.5.1
@@ -45,6 +46,7 @@ specifiers:
   turbo: ^1.8.8
   typescript: ^5.0.3
   use-debounce: ^9.0.3
+  uuid: ^9.0.0
   vite-tsconfig-paths: ^4.0.7
   vitest: ^0.29.8
   zod: ^3.21.4
@@ -76,6 +78,7 @@ dependencies:
   superjson: 1.12.2
   typescript: 5.0.3
   use-debounce: 9.0.3_react@18.2.0
+  uuid: 9.0.0
   zod: 3.21.4
 
 devDependencies:
@@ -85,6 +88,7 @@ devDependencies:
   '@types/node': 18.15.11
   '@types/react': 18.0.32
   '@types/react-dom': 18.0.11
+  '@types/uuid': 9.0.1
   '@typescript-eslint/eslint-plugin': 5.57.0_z24sz2fazj3bxoipp6m4s7b2mi
   '@typescript-eslint/parser': 5.57.0_vwh6htx42aidho2qgfca5u5rwm
   autoprefixer: 10.4.14_postcss@8.4.21
@@ -3400,6 +3404,10 @@ packages:
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: false
+
+  /@types/uuid/9.0.1:
+    resolution: {integrity: sha512-rFT3ak0/2trgvp4yYZo5iKFEPsET7vKydKF+VRCxlQ9bpheehyAJH89dAkaLEq/j/RZXJIqcgsmPJKUP1Z28HA==}
+    dev: true
 
   /@typescript-eslint/eslint-plugin/5.57.0_z24sz2fazj3bxoipp6m4s7b2mi:
     resolution: {integrity: sha512-itag0qpN6q2UMM6Xgk6xoHa0D0/P+M17THnr4SVgqn9Rgam5k/He33MA7/D7QoJcdMxHFyX7U9imaBonAX/6qA==}
@@ -7888,6 +7896,11 @@ packages:
       is-generator-function: 1.0.10
       is-typed-array: 1.1.10
       which-typed-array: 1.1.9
+    dev: false
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
     dev: false
 
   /vite-node/0.29.8_@types+node@18.15.11:

@@ -5,6 +5,7 @@ import {
   type GitHubConfig,
   type LocalConfig,
 } from "@keystatic/core";
+import { v4 as uuidv4 } from "uuid";
 
 import { ComponentBlocks } from "~/components/Keystatic/ComponentBlocks";
 
@@ -31,6 +32,10 @@ export default config({
           name: {
             label: "Title",
           },
+        }),
+        id: fields.text({
+          label: "ID",
+          defaultValue: uuidv4(),
         }),
         summary: fields.text({
           label: "Summary",
