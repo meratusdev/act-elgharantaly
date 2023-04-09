@@ -4,11 +4,12 @@ import {
   Flex,
   Heading,
   HStack,
+  Icon,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-
+import { FaInstagram } from "react-icons/fa";
 import { siteConfig } from "~/siteconfig";
 import Balancer from "~/utils/balancer";
 import { bookmarkAtom } from "~/utils/bookmark";
@@ -20,9 +21,16 @@ interface Props {
   date: string | null | undefined;
   title: string;
   image: string | null;
+  instagramLink: string | null;
 }
 
-export const PostHeader: React.FC<Props> = ({ slug, date, title, image }) => {
+export const PostHeader: React.FC<Props> = ({
+  slug,
+  date,
+  title,
+  image,
+  instagramLink,
+}) => {
   const [bookmark, setBookmark] = useAtom(bookmarkAtom);
 
   const isSlugBookmarked = bookmark.includes(slug);
@@ -70,26 +78,35 @@ export const PostHeader: React.FC<Props> = ({ slug, date, title, image }) => {
         <Balancer>{title}</Balancer>
       </Heading>
 
-      <Box
+      <HStack
         pt={{
           base: "0",
           md: "2",
         }}
+        justifyContent={{
+          base: "left",
+          md: "center",
+        }}
+        fontSize="md"
       >
-        <Text
-          fontSize={{
-            base: "md",
-            md: "lg",
-          }}
-          textAlign={{
-            base: "left",
-            md: "center",
-          }}
-          color="blackAlpha.700"
-        >
-          {dateFormatter(date, "d MMMM yyyy")}
-        </Text>
-      </Box>
+        <Text color="blackAlpha.700">{dateFormatter(date, "d MMMM yyyy")}</Text>
+
+        {instagramLink && <Text> · </Text>}
+
+        {instagramLink && (
+          <HStack
+            spacing="1"
+            as="a"
+            href={instagramLink}
+            color="blue.500"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Text color="blue.500">See on Instagram</Text>
+            <Icon as={FaInstagram} color="blue.500" />
+          </HStack>
+        )}
+      </HStack>
 
       <Flex
         justifyContent={{

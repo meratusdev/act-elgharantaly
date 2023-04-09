@@ -21,6 +21,7 @@ export const PostLayout: React.FC<Props> = ({ id, data, nextPrev }) => {
         title={data.title}
         date={data.publishedDate}
         image={data.coverImage}
+        instagramLink={data.instagramLink}
       />
 
       <Stack
@@ -34,15 +35,15 @@ export const PostLayout: React.FC<Props> = ({ id, data, nextPrev }) => {
         </Box>
       </Stack>
 
-      <Box
+      <Stack
         pt="4"
         pb={{
-          base: "2",
+          base: "4",
           md: "4",
         }}
       >
         <Tags tags={data.tags} />
-      </Box>
+      </Stack>
 
       <Stack
         direction={{
