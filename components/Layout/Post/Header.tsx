@@ -1,7 +1,7 @@
 import {
   Avatar,
   Box,
-  Center,
+  Flex,
   Heading,
   HStack,
   Stack,
@@ -61,30 +61,51 @@ export const PostHeader: React.FC<Props> = ({ slug, date, title, image }) => {
           base: "2xl",
           md: "2xl",
         }}
-        textAlign="center"
+        textAlign={{
+          base: "left",
+          md: "center",
+        }}
         lineHeight="taller"
       >
         <Balancer>{title}</Balancer>
       </Heading>
 
-      <Box pt="2">
+      <Box
+        pt={{
+          base: "0",
+          md: "2",
+        }}
+      >
         <Text
           fontSize={{
             base: "md",
             md: "lg",
           }}
-          textAlign="center"
+          textAlign={{
+            base: "left",
+            md: "center",
+          }}
           color="blackAlpha.700"
         >
           {dateFormatter(date, "d MMMM yyyy")}
         </Text>
       </Box>
 
-      <Center>
-        <HStack pt="6">
+      <Flex
+        justifyContent={{
+          base: "left",
+          md: "center",
+        }}
+      >
+        <HStack
+          pt={{
+            base: "3",
+            md: "6",
+          }}
+        >
           <Avatar src={siteConfig.author.avatar} size="md" />
-          <Stack spacing="0" pl="2" alignItems="justify">
-            <Text fontWeight="semibold">{siteConfig.author.name}</Text>
+          <Stack spacing="0" pl="1" alignItems="justify">
+            <Text>{siteConfig.author.name}</Text>
 
             <Text
               as="a"
@@ -115,7 +136,7 @@ export const PostHeader: React.FC<Props> = ({ slug, date, title, image }) => {
             />
           </Tooltip> */}
         </HStack>
-      </Center>
+      </Flex>
     </Stack>
   );
 };

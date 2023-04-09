@@ -16,10 +16,12 @@ export const OtherPost = ({
       href={`/post/${slug}`}
       justifyContent={direction === "left" ? "left" : "right"}
       size="sm"
+      variant="ghost"
+      color="blue.500"
     >
       <HStack spacing="2">
         {direction === "left" && <ChevronLeftIcon />}
-        <Text fontSize="sm" fontWeight="normal">
+        <Text fontSize="sm" fontWeight="normal" color="blue.500">
           {title}
         </Text>
         {direction === "right" && <ChevronRightIcon />}

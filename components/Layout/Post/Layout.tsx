@@ -34,7 +34,13 @@ export const PostLayout: React.FC<Props> = ({ id, data, nextPrev }) => {
         </Box>
       </Stack>
 
-      <Box pt="4">
+      <Box
+        pt="4"
+        pb={{
+          base: "2",
+          md: "4",
+        }}
+      >
         <Tags tags={data.tags} />
       </Box>
 
@@ -43,7 +49,9 @@ export const PostLayout: React.FC<Props> = ({ id, data, nextPrev }) => {
           base: "column",
           md: "row-reverse",
         }}
-        pt="4"
+        pt={{ base: "2", md: "4" }}
+        borderTop="1px"
+        borderColor="gray.300"
       >
         {nextPrev.next && (
           <OtherPost
