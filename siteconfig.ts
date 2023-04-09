@@ -6,6 +6,7 @@ const ConfigSchema = z.object({
     avatar: z.string(),
   }),
   pagination: z.object({
+    postPerPage: z.number(),
     title: z.object({
       noOfLines: z.number(),
     }),
@@ -25,6 +26,7 @@ export const siteConfig = createConfig({
     avatar: "/avatar.jpg",
   },
   pagination: {
+    postPerPage: 10,
     title: {
       noOfLines: 3,
     },

@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import config from "~/keystatic.config";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { siteConfig } from "~/siteconfig";
 import { sortByDate } from "~/utils/sort";
 import { unwrapContent } from "~/utils/unwrap";
 
@@ -106,7 +107,7 @@ export const postsRouter = createTRPCRouter({
     )
     .query(async ({ input }) => {
       const page = input.page || 1;
-      const limit = input.limit || 4;
+      const limit = input.limit || siteConfig.pagination.postPerPage;
 
       const postSlugs = await reader.collections.posts.list();
 
