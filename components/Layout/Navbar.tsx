@@ -73,6 +73,7 @@ const MobileMenu = () => {
     >
       <Menu>
         <MenuButton
+          aria-label="Menu"
           as={IconButton}
           icon={
             <HamburgerIcon
