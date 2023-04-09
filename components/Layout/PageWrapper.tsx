@@ -8,6 +8,7 @@ import {
 import { Navbar } from "~/components/Layout/Navbar";
 
 const getBaseUrl = () => {
+  if (typeof window !== "undefined") return ""; // browser should use relative url
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
 };
@@ -21,7 +22,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   const image = ogImage
     ? [
         {
-          url: `${getBaseUrl()}/${ogImage}`,
+          url: `${getBaseUrl()}${ogImage}`,
           height: 400,
           width: 700,
         },
