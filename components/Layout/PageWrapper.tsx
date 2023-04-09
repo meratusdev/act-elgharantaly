@@ -42,7 +42,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
         ]}
         openGraph={{
           title,
-          images: image,
+          // images: image,
         }}
         twitter={{
           cardType: "summary",
