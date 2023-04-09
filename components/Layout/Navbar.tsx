@@ -49,18 +49,18 @@ export const Navbar = () => {
 };
 
 const listMenu: Array<{ title: string; href: string }> = [
-  {
-    title: "Archive",
-    href: "/archive",
-  },
+  // {
+  //   title: "Archive",
+  //   href: "/archive",
+  // },
   {
     title: "Search",
     href: "/search",
   },
-  {
-    title: "About",
-    href: "/about",
-  },
+  // {
+  //   title: "About",
+  //   href: "/about",
+  // },
 ];
 
 const MobileMenu = () => {
