@@ -133,7 +133,7 @@ export const postsRouter = createTRPCRouter({
       const totalPage =
         data.length % limit === 0
           ? data.length / limit
-          : data.length / limit + 1;
+          : Math.floor(data.length / limit) + 1;
 
       const paging = {
         page,
