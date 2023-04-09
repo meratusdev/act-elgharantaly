@@ -10,10 +10,6 @@ export const config = {
   },
 };
 
-const interRegular = fetch(
-  new URL(`~/assets/fonts/Inter-Regular.ttf`, import.meta.url),
-).then((res) => res.arrayBuffer());
-
 const interSemiBold = fetch(
   new URL(`~/assets/fonts/Inter-SemiBold.ttf`, import.meta.url),
 ).then((res) => res.arrayBuffer());
@@ -25,7 +21,6 @@ const interExtraBold = fetch(
 const handler = async (request: NextRequest) => {
   const { searchParams } = new URL(request.url);
 
-  const interRegularFont = await interRegular;
   const interSemiBoldFont = await interSemiBold;
   const interExtraBoldFont = await interExtraBold;
 
@@ -59,12 +54,6 @@ const handler = async (request: NextRequest) => {
       width: 700,
       height: 400,
       fonts: [
-        {
-          name: "Inter",
-          data: interRegularFont,
-          style: "normal",
-          weight: 400,
-        },
         {
           name: "Inter",
           data: interSemiBoldFont,
