@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "d1:init": "wrangler d1 execute act-elgharantaly-v1 --local --file=./schema.sql"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.18",
@@ -24,6 +25,8 @@
     "@trpc/server": "^10.18.0",
     "@vercel/og": "^0.5.1",
     "date-fns": "^2.29.3",
+    "drizzle-kit": "^0.17.4",
+    "drizzle-orm": "^0.23.8",
     "framer-motion": "^10.10.0",
     "jotai": "^2.0.3",
     "lodash": "^4.17.21",
@@ -38,6 +41,7 @@
     "typescript": "^5.0.3",
     "use-debounce": "^9.0.3",
     "uuid": "^9.0.0",
+    "yaml": "^2.2.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
