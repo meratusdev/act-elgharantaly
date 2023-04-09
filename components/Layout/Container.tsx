@@ -33,6 +33,7 @@ export const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
           md: "24",
         }}
         pb="8"
+        w="full"
       >
         {children}
       </Stack>
