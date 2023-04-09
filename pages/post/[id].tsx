@@ -3,6 +3,7 @@ import {
   type GetStaticPropsContext,
   type InferGetStaticPropsType,
 } from "next";
+import { title } from "process";
 
 import PageWrapper from "~/components/Layout/PageWrapper";
 import { PostLayout } from "~/components/Layout/Post/Layout";
@@ -45,7 +46,10 @@ export const getStaticProps = async (
 
 const PagePosts = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <PageWrapper title={props.data.title}>
+    <PageWrapper
+      title={props.data.title}
+      ogImage={`/api/og-image?title=${title}`}
+    >
       <PostLayout {...props} />
     </PageWrapper>
   );

@@ -11,7 +11,18 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   title,
   description,
   children,
+  ogImage,
 }) => {
+  const image = ogImage
+    ? [
+        {
+          url: ogImage,
+          height: 400,
+          width: 700,
+        },
+      ]
+    : [];
+
   return (
     <>
       <NextSeo
@@ -23,6 +34,13 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
             href: "/favicon.ico",
           },
         ]}
+        openGraph={{
+          title,
+          images: image,
+        }}
+        twitter={{
+          cardType: "summary",
+        }}
       />
       <Navbar />
       <ContainerWrapper>
@@ -39,4 +57,5 @@ interface PageWrapperProps {
   author?: string;
   description?: string;
   children: React.ReactNode;
+  ogImage?: string;
 }
