@@ -1,12 +1,5 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  Center,
-  HStack,
-  IconButton,
-  Square,
-  Text,
-} from "@chakra-ui/react";
+import { ChevronLeftIcon, ChevronRightIcon, Icon } from "@chakra-ui/icons";
+import { Button, Center, HStack, IconButton, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import { createPageNumbers } from "~/components/UI/Pagination/utils";
@@ -34,16 +27,13 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <Center>
       <HStack>
-        <IconButton
-          as="a"
-          href={hasPrevious ? `/${path}/${page - 1}` : undefined}
-          aria-label="Previous page"
-          size="sm"
-          boxSize="40px"
-          variant="ghost"
+        <ButtonLink
+          ariaLabel="Previous page"
+          href={`/${path}/${page - 1}`}
           isDisabled={!hasPrevious}
           icon={<ChevronLeftIcon h={6} w={6} />}
         />
+
         <HStack>
           {pageNumber.map((i) => {
             const _text = i === null ? "..." : i;
@@ -71,17 +61,48 @@ export const Pagination: React.FC<PaginationProps> = ({
             );
           })}
         </HStack>
-        <IconButton
-          as="a"
-          href={hasNext ? `/${path}/${page + 1}` : undefined}
-          aria-label="Next page"
-          size="sm"
-          boxSize="40px"
-          variant="ghost"
-          isDisabled={!hasNext}
+        <ButtonLink
+          ariaLabel="Next page"
+          href={`/${path}/${page + 1}`}
           icon={<ChevronRightIcon h={6} w={6} />}
+          isDisabled={!hasNext}
         />
       </HStack>
     </Center>
+  );
+};
+
+interface Props {
+  ariaLabel: string;
+  href: string;
+  isDisabled: boolean;
+  icon: JSX.Element;
+}
+
+const ButtonLink: React.FC<Props> = ({ href, isDisabled, ariaLabel, icon }) => {
+  if (isDisabled) {
+    return (
+      <IconButton
+        aria-label={ariaLabel}
+        size="sm"
+        boxSize="40px"
+        variant="ghost"
+        isDisabled={isDisabled}
+        icon={icon}
+      />
+    );
+  }
+
+  return (
+    <IconButton
+      as="a"
+      href={href}
+      aria-label={ariaLabel}
+      size="sm"
+      boxSize="40px"
+      variant="ghost"
+      isDisabled={isDisabled}
+      icon={icon}
+    />
   );
 };
