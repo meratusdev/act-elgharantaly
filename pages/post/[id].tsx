@@ -7,6 +7,7 @@ import {
 import PageWrapper from "~/components/Layout/PageWrapper";
 import { PostLayout } from "~/components/Layout/Post/Layout";
 import { trpcServerSide } from "~/server/api/root";
+import { siteConfig } from "~/siteconfig";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await trpcServerSide.posts.getAllSlug();
@@ -46,7 +47,8 @@ export const getStaticProps = async (
 const PagePosts = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <PageWrapper
-      title={props.data.title}
+      title={`${props.data.title} | ${siteConfig.author.name}`}
+      description={props.data.summary}
       ogImage={`/api/og/post?title=${props.data.title}`}
     >
       <PostLayout {...props} />
