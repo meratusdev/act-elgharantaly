@@ -49,7 +49,9 @@ export const PostCard: React.FC<Props> = ({
             color="blackAlpha.900"
           >
             {isSearchMode ? (
-              <Highlight query={highlight}>{title}</Highlight>
+              <Highlight query={highlight} styles={highlightStyle}>
+                {title}
+              </Highlight>
             ) : (
               title
             )}
@@ -136,9 +138,11 @@ const HighlightSummary: React.FC<HighlightSummaryProps> = ({
 
   // if query found in splitText, return summary with highlight
   const start = indexHighlight - 10 < 0 ? 0 : indexHighlight - 10;
-  const end = indexHighlight + 10;
+  const end = indexHighlight + 30;
 
-  const textHighlight = splitText.slice(start, end).join(" ");
+  let textHighlight = splitText.slice(start, end).join(" ");
+
+  textHighlight = start === 0 ? textHighlight : `...${textHighlight}`;
 
   return (
     <Text
