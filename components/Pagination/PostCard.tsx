@@ -7,7 +7,6 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
-import { match, P } from "ts-pattern";
 
 import { siteConfig } from "~/siteconfig";
 import dateFormatter from "~/utils/dateFormatter";
