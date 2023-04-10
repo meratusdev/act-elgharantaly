@@ -44,11 +44,14 @@ export const SearchLayout: React.FC<Props> = ({ data }) => {
       if (isFound) {
         return (
           <>
+            {/* CARD */}
             <Stack spacing="6" divider={<Divider h="0.5px" bg="gray.300" />}>
               {filteredData.slice(0, limitShowResult).map((post) => (
                 <PostCard key={post.slug} highlight={searchValue} {...post} />
               ))}
             </Stack>
+
+            {/* BUTTON: TAMPILKAN LEBIH BANYAK */}
             {filteredData.length > limitShowResult && (
               <Center mt="8">
                 <Button

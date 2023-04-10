@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Balancer from "react-wrap-balancer";
+import { match, P } from "ts-pattern";
 
 import { siteConfig } from "~/siteconfig";
 import dateFormatter from "~/utils/dateFormatter";
@@ -33,11 +34,12 @@ export const PostCard: React.FC<Props> = ({
   fullText,
   highlight,
 }) => {
-  const isHighlight = highlight !== undefined;
+  const isSearchMode = highlight !== undefined;
 
   return (
     <Link key={slug} href={`/post/${slug}`}>
       <Stack spacing="3">
+        {/* TITLE */}
         <Balancer>
           <Heading
             fontSize={{
@@ -46,16 +48,16 @@ export const PostCard: React.FC<Props> = ({
             }}
             color="blackAlpha.900"
           >
-            {isHighlight ? (
-              <Highlight query={highlight} styles={highlightStyle}>
-                {title}
-              </Highlight>
+            {isSearchMode ? (
+              <Highlight query={highlight}>{title}</Highlight>
             ) : (
               title
             )}
           </Heading>
         </Balancer>
-        {isHighlight ? (
+
+        {/* SUMMARY */}
+        {isSearchMode ? (
           <HighlightSummary
             title={title}
             fullText={fullText as string}
@@ -102,9 +104,10 @@ const HighlightSummary: React.FC<HighlightSummaryProps> = ({
   summary,
   query,
 }) => {
-  const text = fullText.replace(title, "");
-  const splitText = text.split(" ");
+  const text = fullText.replace(title, ""); // remove title from fullText
+  const splitText = text.split(" "); // split text to array
 
+  // find index of query in splitText
   const findIndex = (text: string[], query: string) => {
     const index = text
       .map((word) => word.toLowerCase())
@@ -115,6 +118,7 @@ const HighlightSummary: React.FC<HighlightSummaryProps> = ({
 
   const indexHighlight = findIndex(splitText, query);
 
+  //  if query not found in splitText, return plain summary
   if (indexHighlight === -1) {
     return (
       <Text
@@ -130,6 +134,7 @@ const HighlightSummary: React.FC<HighlightSummaryProps> = ({
     );
   }
 
+  // if query found in splitText, return summary with highlight
   const start = indexHighlight - 10 < 0 ? 0 : indexHighlight - 10;
   const end = indexHighlight + 10;
 
