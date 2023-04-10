@@ -11,8 +11,8 @@ import {
 import { isEmpty, lowerCase } from "lodash";
 import { useEffect, useState } from "react";
 
-import { PostCard } from "~/components/Layout/Pagination/PostCard";
-import { SearchForm } from "~/components/Layout/Search/Form";
+import { PostCard } from "~/components/Pagination/PostCard";
+import { SearchForm } from "~/components/Search/Form";
 import { type OutputTypeTRPC } from "~/server/api/root";
 
 type Props = {

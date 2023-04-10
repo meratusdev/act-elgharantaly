@@ -1,10 +1,10 @@
 import { Box, Spacer, Stack } from "@chakra-ui/react";
 import { DocumentRenderer } from "@keystatic/core/renderer";
 
-import { PostHeader } from "~/components/Layout/Post/Header";
-import { OtherPost } from "~/components/Layout/Post/OtherPost";
-import { renderersPost } from "~/components/Layout/Post/RendererConfig";
-import { Tags } from "~/components/Layout/Post/Tag";
+import { PostHeader } from "~/components/Post/Header";
+import { OtherPost } from "~/components/Post/OtherPost";
+import { renderersPost } from "~/components/Post/RendererConfig";
+import { Tags } from "~/components/Post/Tag";
 import { type OutputTypeTRPC } from "~/server/api/root";
 
 interface Props {

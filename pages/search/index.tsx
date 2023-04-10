@@ -1,7 +1,7 @@
 import { type InferGetStaticPropsType } from "next";
 
-import PageWrapper from "~/components/Layout/PageWrapper";
-import { SearchLayout } from "~/components/Layout/Search/Layout";
+import { PageWrapper } from "~/components/Layout";
+import { SearchLayout } from "~/components/Search";
 import { trpcServerSide } from "~/server/api/root";
 import { siteConfig } from "~/siteconfig";
 

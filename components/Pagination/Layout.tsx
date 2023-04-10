@@ -1,6 +1,6 @@
 import { Box, Divider, Spacer, Stack } from "@chakra-ui/react";
 
-import { PostCard } from "~/components/Layout/Pagination/PostCard";
+import { PostCard } from "~/components/Pagination/PostCard";
 import { Pagination } from "~/components/UI";
 import { type OutputTypeTRPC } from "~/server/api/root";
 

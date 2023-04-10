@@ -13,7 +13,7 @@ const getBaseUrl = () => {
   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
 };
 
-const PageWrapper: React.FC<PageWrapperProps> = ({
+export const PageWrapper: React.FC<PageWrapperProps> = ({
   title,
   description,
   children,
@@ -55,8 +55,6 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
     </>
   );
 };
-
-export default PageWrapper;
 
 interface PageWrapperProps {
   title: string;

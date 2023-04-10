@@ -5,8 +5,8 @@ import {
   type InferGetStaticPropsType,
 } from "next";
 
-import PageWrapper from "~/components/Layout/PageWrapper";
-import { PaginationLayout } from "~/components/Layout/Pagination/Layout";
+import { PageWrapper } from "~/components/Layout";
+import { PaginationLayout } from "~/components/Pagination";
 import { trpcServerSide } from "~/server/api/root";
 import { siteConfig } from "~/siteconfig";
 

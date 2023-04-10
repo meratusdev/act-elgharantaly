@@ -4,8 +4,8 @@ import {
   type InferGetStaticPropsType,
 } from "next";
 
-import PageWrapper from "~/components/Layout/PageWrapper";
-import { PostLayout } from "~/components/Layout/Post/Layout";
+import { PageWrapper } from "~/components/Layout";
+import { PostLayout } from "~/components/Post";
 import { trpcServerSide } from "~/server/api/root";
 import { siteConfig } from "~/siteconfig";
 
