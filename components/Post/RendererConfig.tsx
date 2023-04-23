@@ -18,7 +18,18 @@ export const renderersPost: DocumentRendererProps["renderers"] = {
   block: {
     paragraph: ({ children, textAlign }) => {
       return (
-        <Text fontSize="md" py="2" lineHeight="28px" textAlign={textAlign}>
+        <Text
+          fontSize={{
+            base: "md",
+            md: "lg",
+          }}
+          py="2"
+          lineHeight={{
+            base: "29px",
+            md: "31px",
+          }}
+          textAlign={textAlign}
+        >
           {children}
         </Text>
       );
